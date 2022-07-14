@@ -7,6 +7,9 @@ const CREDENTIALS = JSON.parse(process.env.CREDENTIALS)
 const sessionId = "test-session"
 const languageCode = "en"
 
+console.log("LOOKING AT CREDENTIALS ENV")
+console.log(CREDENTIALS)
+
 const projectId = CREDENTIALS.project_id;
 
 const credentials = {
