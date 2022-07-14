@@ -4,6 +4,7 @@ module.exports = app => {
     app.post('/query-intent', async(req, res) => {
         // console.log(req)
         const { text, userId } = req.body;
+        console.log("REQUEST BODY:", req.body)
         const resultQuery = await chatbot.intentQuery(text, userId) // function in chatbot.js
         console.log("RETURNED ITEM")
         // console.log(resultQuery)

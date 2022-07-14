@@ -7,9 +7,6 @@ const CREDENTIALS = JSON.parse(process.env.CREDENTIALS)
 const sessionId = "test-session"
 const languageCode = "en"
 
-console.log("LOOKING AT CREDENTIALS ENV")
-console.log(CREDENTIALS)
-
 const projectId = CREDENTIALS.project_id;
 
 const credentials = {
@@ -21,7 +18,8 @@ const sessionClient = new dialogflow.SessionsClient({projectId, credentials});
 
 const intentQuery = async(userText, userId) => {
     // connect w df api
-    console.log(userId)
+    console.log("USER ID:", userId)
+    console.log("USER TEXT:", userText)
     const sessionPath = sessionClient.sessionPath(projectId, sessionId+userId)
     const request = {
         session: sessionPath,
