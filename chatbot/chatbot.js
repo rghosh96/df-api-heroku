@@ -1,7 +1,5 @@
 // connect df w server
 const dialogflow = require('dialogflow');
-const { googleProjectId } = require('../config/devkey');
-const config = require('../config/devkey')
 
 require('dotenv').config()
 
