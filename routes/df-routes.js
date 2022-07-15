@@ -11,10 +11,31 @@ module.exports = app => {
 
         let agentText
         let payload = {}
+        var intentName = resultQuery.intent.displayName
 
         // get agent text
         agentText = resultQuery.fulfillmentMessages[0].text.text[0]
         console.log("agentText:", agentText)
+
+        // check if output context has any studies
+        var studies = {}
+        if (intentName === "Call CT API") {
+            var outputContext = resultQuery.outputContexts[0].parameters.fields
+            for (var key of Object.keys(outputContext)) {
+            console.log(key + " -> " + key)
+                if(key.includes("Study")) {
+                    console.log(outputContext[key])
+                    studies[key] = outputContext[key].structValue.fields
+                }
+            }
+        }
+
+        // check if study selected
+        let selectedStudy;
+        if (intentName === "Show CT Info") {
+            selectedStudy = resultQuery.outputContexts[0].parameters.fields
+            console.log("IN CT INFO", selectedStudy)
+        }
 
         // check if any payload
         if (resultQuery.fulfillmentMessages.length > 1) {
@@ -63,8 +84,11 @@ module.exports = app => {
         }
 
         let frontendData = {
+            intentName: resultQuery.intent.displayName,
             agentText: agentText,
-            payload: payload
+            payload: payload,
+            studiesList: studies,
+            selectedStudy: selectedStudy
         }
 
         res.send(frontendData)
