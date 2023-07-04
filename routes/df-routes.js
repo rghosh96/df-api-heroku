@@ -84,7 +84,7 @@ module.exports = app => {
         }
 
         let frontendData = {
-            intentName: resultQuery.intent.displayName,
+            name: resultQuery.intent.displayName,
             agentText: agentText,
             payload: payload,
             studiesList: studies,
