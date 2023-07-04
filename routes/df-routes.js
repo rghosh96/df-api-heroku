@@ -11,7 +11,7 @@ module.exports = app => {
 
         let agentText
         let payload = {}
-        var intentName = resultQuery.intent.displayName
+        // var intentName = resultQuery.intent.displayName
 
         // get agent text
         agentText = resultQuery.fulfillmentMessages[0].text.text[0]
@@ -84,7 +84,6 @@ module.exports = app => {
         }
 
         let frontendData = {
-            intentName: resultQuery.intent.displayName,
             agentText: agentText,
             payload: payload,
             studiesList: studies,
