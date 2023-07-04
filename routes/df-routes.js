@@ -7,7 +7,7 @@ module.exports = app => {
         console.log("REQUEST BODY:", req.body)
         const resultQuery = await chatbot.intentQuery(text, userId) // function in chatbot.js
         console.log("RETURNED ITEM")
-        // console.log(resultQuery)
+        console.log(resultQuery)
 
         let agentText
         let payload = {}
